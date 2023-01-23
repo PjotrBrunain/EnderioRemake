@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "enderioremake:block/conductive_iron_block"
+  }
+}
