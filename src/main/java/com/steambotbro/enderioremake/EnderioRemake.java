@@ -2,9 +2,15 @@ package com.steambotbro.enderioremake;
 
 import com.mojang.logging.LogUtils;
 import com.steambotbro.enderioremake.block.ModBlocks;
+import com.steambotbro.enderioremake.block.entity.ModBlockEntities;
+import com.steambotbro.enderioremake.fluid.ModFluidTypes;
+import com.steambotbro.enderioremake.fluid.ModFluids;
 import com.steambotbro.enderioremake.item.ModCreativeModeTab;
 import com.steambotbro.enderioremake.item.ModItems;
+import com.steambotbro.enderioremake.networking.ModMessages;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -31,6 +37,10 @@ public class EnderioRemake
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+        ModFluids.register(modEventBus);
+        ModFluidTypes.register(modEventBus);
+
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::registerCreativeTab);
@@ -45,9 +55,12 @@ public class EnderioRemake
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        event.enqueueWork(() ->
+        {
+            ModMessages.register();
+        });
         // Some common setup code
-        LOGGER.info("HELLO FROM COMMON SETUP");
-        LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
+
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
@@ -57,9 +70,8 @@ public class EnderioRemake
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            // Some client setup code
-            LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_FIRE_WATER.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_FIRE_WATER.get(), RenderType.translucent());
         }
     }
 }

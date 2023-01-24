@@ -1,7 +1,11 @@
 package com.steambotbro.enderioremake.item;
 
 import com.steambotbro.enderioremake.EnderioRemake;
+import com.steambotbro.enderioremake.fluid.ModFluids;
+import com.steambotbro.enderioremake.item.custom.YetaWrenchItem;
+import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -14,6 +18,8 @@ public class ModItems {
     public static final RegistryObject<Item> BINDERCOMPOSITE = ITEMS.register("binder_composite", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CONDUITBINDER = ITEMS.register("conduit_binder", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CONDUCTIVEIRON = ITEMS.register("conductive_iron", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> YETA_WRENCH = ITEMS.register("yeta_wrench", () -> new YetaWrenchItem(new Item.Properties()));
+    public static final RegistryObject<Item> FIRE_WATER_BUCKET = ITEMS.register("fire_water_bucket", () -> new BucketItem(ModFluids.SOURCE_FIRE_WATER ,new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
 
     public static void register(IEventBus eventBus)
     {
@@ -29,6 +35,7 @@ public class ModItems {
             event.accept(BINDERCOMPOSITE);
             event.accept(CONDUITBINDER);
             event.accept(CONDUCTIVEIRON);
+            event.accept(YETA_WRENCH);
         }
     }
 }

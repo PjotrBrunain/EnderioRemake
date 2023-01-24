@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "enderioremake:block/block_alloy_smelter_front_on",
+    "side": "enderioremake:block/block_machine_side",
+    "top": "enderioremake:block/block_machine_top"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "enderioremake:item/conductive_iron"
+    "layer0": "enderioremake:item/item_alloy_ingot_conductive_iron"
   }
 }

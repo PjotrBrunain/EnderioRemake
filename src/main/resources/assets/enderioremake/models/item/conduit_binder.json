@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "enderioremake:item/conduit_binder"
+    "layer0": "enderioremake:item/item_material_conduit_binder"
   }
 }

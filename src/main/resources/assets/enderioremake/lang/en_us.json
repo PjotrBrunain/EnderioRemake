@@ -2,6 +2,13 @@
   "item.enderioremake.binder_composite": "Binder Composite",
   "item.enderioremake.conduit_binder": "Conduit Binder",
   "item.enderioremake.conductive_iron": "Conductive Iron",
+  "item.enderioremake.yeta_wrench": "Yeta Wrench",
   "itemGroup.enderioremake": "Enderio Remake",
-  "block.enderioremake.conductive_iron_block": "Block of conductive iron"
+  "block.enderioremake.conductive_iron_block": "Block of conductive iron",
+  "enderioremake.alloy_smelter": "Alloy Smelter",
+
+  "key.category.enderioremake.keybinds": "Enderio",
+  "key.enderioremake.spawn_cow": "Spawn a cow",
+
+  "item.enderioremake.fire_water_bucket": "FireWater Bucket"
 }
