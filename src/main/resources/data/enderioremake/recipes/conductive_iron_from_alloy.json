@@ -1,0 +1,14 @@
+{
+  "type": "enderioremake:alloy_smelting",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:redstone"
+    }
+  ],
+  "output": {
+    "item": "enderioremake:conductive_iron"
+  }
+}

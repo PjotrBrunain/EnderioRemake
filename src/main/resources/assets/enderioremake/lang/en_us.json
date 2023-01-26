@@ -5,7 +5,9 @@
   "item.enderioremake.yeta_wrench": "Yeta Wrench",
   "itemGroup.enderioremake": "Enderio Remake",
   "block.enderioremake.conductive_iron_block": "Block of conductive iron",
-  "enderioremake.alloy_smelter": "Alloy Smelter",
+  "block.enderioremake.alloy_smelter": "Alloy Smelter",
+  "enderioremake.alloy_smelter": "",
+  "container.inventory": "",
 
   "key.category.enderioremake.keybinds": "Enderio",
   "key.enderioremake.spawn_cow": "Spawn a cow",

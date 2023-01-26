@@ -8,10 +8,12 @@ import com.steambotbro.enderioremake.fluid.ModFluids;
 import com.steambotbro.enderioremake.item.ModCreativeModeTab;
 import com.steambotbro.enderioremake.item.ModItems;
 import com.steambotbro.enderioremake.networking.ModMessages;
-import net.minecraft.client.Minecraft;
+import com.steambotbro.enderioremake.recipe.ModRecipes;
+import com.steambotbro.enderioremake.screen.AlloySmelterScreen;
+import com.steambotbro.enderioremake.screen.ModMenuTypes;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
@@ -21,7 +23,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -40,7 +41,9 @@ public class EnderioRemake
         ModBlockEntities.register(modEventBus);
         ModFluids.register(modEventBus);
         ModFluidTypes.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
 
+        ModRecipes.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::registerCreativeTab);
@@ -72,6 +75,8 @@ public class EnderioRemake
         {
             ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_FIRE_WATER.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_FIRE_WATER.get(), RenderType.translucent());
+
+            MenuScreens.register(ModMenuTypes.ALLOY_SMELTER_MENU.get(), AlloySmelterScreen::new);
         }
     }
 }
