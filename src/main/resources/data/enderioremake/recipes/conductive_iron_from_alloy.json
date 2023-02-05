@@ -10,5 +10,6 @@
   ],
   "output": {
     "item": "enderioremake:conductive_iron"
-  }
+  },
+  "group": "enderioremake"
 }

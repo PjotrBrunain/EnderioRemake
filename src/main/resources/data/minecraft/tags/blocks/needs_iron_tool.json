@@ -1,6 +1,22 @@
 {
   "replace": false,
   "values": [
-    "enderioremake:conductive_iron_block"
+    "enderioremake:conductive_iron_block",
+    "enderioremake:block_alloy_crude_steel",
+    "enderioremake:block_alloy_crystalline_alloy",
+    "enderioremake:block_alloy_crystalline_pink_slime",
+    "enderioremake:block_alloy_dark_steel",
+    "enderioremake:block_alloy_electrical_steel",
+    "enderioremake:block_alloy_end_steel",
+    "enderioremake:block_alloy_energetic_silver",
+    "enderioremake:block_alloy_melodic_alloy",
+    "enderioremake:block_alloy_pulsating_iron",
+    "enderioremake:block_alloy_redstone_alloy",
+    "enderioremake:block_alloy_soularium",
+    "enderioremake:block_alloy_stellar_alloy",
+    "enderioremake:block_alloy_vibrant_alloy",
+    "enderioremake:block_alloy_vivid_alloy",
+    "enderioremake:block_alloy_construction_alloy",
+    "enderioremake:alloy_smelter"
   ]
 }

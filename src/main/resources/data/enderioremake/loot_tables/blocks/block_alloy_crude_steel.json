@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "enderioremake:block_alloy_crude_steel"
+        }
+      ]
+    }
+  ]
+}

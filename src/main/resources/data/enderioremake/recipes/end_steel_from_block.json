@@ -1,0 +1,13 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "ingredients": [
+  {
+   "item": "enderioremake:block_alloy_end_steel"
+  }
+ ],
+ "result": {
+  "item": "enderioremake:item_alloy_ingot_end_steel",
+  "count": 9
+ },
+ "group": "enderioremake"
+}

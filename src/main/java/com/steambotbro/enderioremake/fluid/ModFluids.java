@@ -17,15 +17,15 @@ public class ModFluids {
 
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, EnderioRemake.MOD_ID);
 
-    public static final RegistryObject<FlowingFluid> SOURCE_FIRE_WATER = FLUIDS.register("fire_water_fluid",
+/*    public static final RegistryObject<FlowingFluid> SOURCE_FIRE_WATER = FLUIDS.register("fire_water_fluid",
             () -> new ForgeFlowingFluid.Source(ModFluids.FIRE_WATER_FLUID_PROPERTIES));
 
     public static final RegistryObject<FlowingFluid> FLOWING_FIRE_WATER = FLUIDS.register("flowing_fire_water_fluid",
-            () -> new ForgeFlowingFluid.Flowing(ModFluids.FIRE_WATER_FLUID_PROPERTIES));
+            () -> new ForgeFlowingFluid.Flowing(ModFluids.FIRE_WATER_FLUID_PROPERTIES));*/
 
-    public static final ForgeFlowingFluid.Properties FIRE_WATER_FLUID_PROPERTIES = new ForgeFlowingFluid.Properties(
+   /* public static final ForgeFlowingFluid.Properties FIRE_WATER_FLUID_PROPERTIES = new ForgeFlowingFluid.Properties(
             ModFluidTypes.FIRE_WATER_FLUID_TYPE, SOURCE_FIRE_WATER, FLOWING_FIRE_WATER)
-            .slopeFindDistance(2).levelDecreasePerBlock(1).block(ModBlocks.FIRE_WATER_BLOCK).bucket(ModItems.FIRE_WATER_BUCKET);
+            .slopeFindDistance(2).levelDecreasePerBlock(1).block(ModBlocks.FIRE_WATER_BLOCK).bucket(ModItems.FIRE_WATER_BUCKET);*/
 
     public static void register(IEventBus eventBus)
     {

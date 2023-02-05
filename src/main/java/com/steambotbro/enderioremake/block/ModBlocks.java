@@ -27,13 +27,57 @@ public class ModBlocks
     public static final RegistryObject<Block> CONDUCTIVEIRONBLOCK = registerBlock("conductive_iron_block",
             () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
                     .strength(6f).requiresCorrectToolForDrops()));
-
+    public static final RegistryObject<Block> CONSTRUCTIONALLOYBLOCK = registerBlock("block_alloy_construction_alloy",
+            () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(6f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> CRUDESTEELBLOCK = registerBlock("block_alloy_crude_steel",
+            () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(6f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> CRYSTALLINEALLOYBLOCK = registerBlock("block_alloy_crystalline_alloy",
+            () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(6f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> CRYSTALLINEPINKSLIMEBLOCK = registerBlock("block_alloy_crystalline_pink_slime",
+            () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(6f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> DARKSTEELBLOCK = registerBlock("block_alloy_dark_steel",
+            () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(6f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> ELECTRICALSTEELBLOCK = registerBlock("block_alloy_electrical_steel",
+            () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(6f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> ENDSTEELBLOCK = registerBlock("block_alloy_end_steel",
+            () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(6f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> ENERGETICSILVERBLOCK = registerBlock("block_alloy_energetic_silver",
+            () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(6f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> MELODICALLOYBLOCK = registerBlock("block_alloy_melodic_alloy",
+            () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(6f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> PULSATINGIRONBLOCK = registerBlock("block_alloy_pulsating_iron",
+            () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(6f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> REDSTONEALLOYBLOCK = registerBlock("block_alloy_redstone_alloy",
+            () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(6f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> SOULARIUMBLOCK = registerBlock("block_alloy_soularium",
+            () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(6f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> STELLARALLOYBLOCK = registerBlock("block_alloy_stellar_alloy",
+            () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(6f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> VIBRANTALLOYBLOCK = registerBlock("block_alloy_vibrant_alloy",
+            () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(6f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> VIVIDALLOYBLOCK = registerBlock("block_alloy_vivid_alloy",
+            () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(6f).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> ALLOY_SMELTER_BLOCK = registerBlock("alloy_smelter",
             () -> new AlloySmelterBlock(BlockBehaviour.Properties.of(Material.METAL)
                     .strength(6f).requiresCorrectToolForDrops().lightLevel(state -> state.getValue(AlloySmelterBlock.LIT) ? 15 : 0)));
 
-    public static final RegistryObject<LiquidBlock> FIRE_WATER_BLOCK = BLOCKS.register("fire_water_block",
-            () -> new LiquidBlock(ModFluids.SOURCE_FIRE_WATER, BlockBehaviour.Properties.copy(Blocks.WATER)));
+    //public static final RegistryObject<LiquidBlock> FIRE_WATER_BLOCK = BLOCKS.register("fire_water_block",
+    //        () -> new LiquidBlock(ModFluids.SOURCE_FIRE_WATER, BlockBehaviour.Properties.copy(Blocks.WATER)));
 
     private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block)
     {
@@ -59,6 +103,21 @@ public class ModBlocks
         {
             event.accept(CONDUCTIVEIRONBLOCK);
             event.accept(ALLOY_SMELTER_BLOCK);
+            event.accept(CONSTRUCTIONALLOYBLOCK);
+            event.accept(CRUDESTEELBLOCK);
+            event.accept(CRYSTALLINEALLOYBLOCK);
+            event.accept(CRYSTALLINEPINKSLIMEBLOCK);
+            event.accept(DARKSTEELBLOCK);
+            event.accept(ELECTRICALSTEELBLOCK);
+            event.accept(ENDSTEELBLOCK);
+            event.accept(ENERGETICSILVERBLOCK);
+            event.accept(MELODICALLOYBLOCK);
+            event.accept(PULSATINGIRONBLOCK);
+            event.accept(REDSTONEALLOYBLOCK);
+            event.accept(SOULARIUMBLOCK);
+            event.accept(STELLARALLOYBLOCK);
+            event.accept(VIBRANTALLOYBLOCK);
+            event.accept(VIVIDALLOYBLOCK);
         }
     }
 }

@@ -1,0 +1,6 @@
+{
+ "parent": "block/cube_all",
+ "textures": {
+  "all": "enderioremake:block/block_alloy_dark_steel"
+ }
+}

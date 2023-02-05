@@ -73,8 +73,8 @@ public class EnderioRemake
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_FIRE_WATER.get(), RenderType.translucent());
-            ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_FIRE_WATER.get(), RenderType.translucent());
+           // ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_FIRE_WATER.get(), RenderType.translucent());
+           // ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_FIRE_WATER.get(), RenderType.translucent());
 
             MenuScreens.register(ModMenuTypes.ALLOY_SMELTER_MENU.get(), AlloySmelterScreen::new);
         }

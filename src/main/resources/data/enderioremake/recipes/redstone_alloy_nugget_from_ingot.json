@@ -1,0 +1,13 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "ingredients": [
+  {
+   "item": "enderioremake:item_alloy_ingot_redstone_alloy"
+  }
+ ],
+ "result": {
+  "item": "enderioremake:item_alloy_nugget_redstone_alloy",
+  "count": 9
+ },
+ "group": "enderioremake"
+}

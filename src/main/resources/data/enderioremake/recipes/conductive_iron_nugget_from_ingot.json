@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "enderioremake:conductive_iron"
+        }
+    ],
+    "result": {
+        "item": "enderioremake:item_alloy_nugget_conductive_iron",
+        "count": 9
+    },
+    "group": "enderioremake"
+}

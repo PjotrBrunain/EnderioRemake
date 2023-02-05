@@ -1,0 +1,18 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "###",
+  "###",
+  "###"
+ ],
+"key": {
+  "#": {
+   "item": "enderioremake:item_alloy_nugget_electrical_steel"
+  }
+ },
+ "result": {
+  "item": "enderioremake:item_alloy_ingot_electrical_steel",
+  "count": 1
+ },
+ "group": "enderioremake"
+}

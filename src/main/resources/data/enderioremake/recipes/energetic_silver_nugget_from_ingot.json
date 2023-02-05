@@ -1,0 +1,13 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "ingredients": [
+  {
+   "item": "enderioremake:item_alloy_ingot_energetic_silver"
+  }
+ ],
+ "result": {
+  "item": "enderioremake:item_alloy_nugget_energetic_silver",
+  "count": 9
+ },
+ "group": "enderioremake"
+}

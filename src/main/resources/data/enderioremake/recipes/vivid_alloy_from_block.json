@@ -1,0 +1,13 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "ingredients": [
+  {
+   "item": "enderioremake:block_alloy_vivid_alloy"
+  }
+ ],
+ "result": {
+  "item": "enderioremake:item_alloy_ingot_vivid_alloy",
+  "count": 9
+ },
+ "group": "enderioremake"
+}

@@ -9,7 +9,7 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
 
 @SuppressWarnings("removal")
@@ -35,7 +35,7 @@ public class AlloySmelterMenu extends AbstractContainerMenu
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
+        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
             this.addSlot(new SlotItemHandler(handler, 0, 54, 17));
             this.addSlot(new SlotItemHandler(handler, 1, 79, 7));
             this.addSlot(new SlotItemHandler(handler, 2, 103, 17));
@@ -133,5 +133,10 @@ public class AlloySmelterMenu extends AbstractContainerMenu
         {
             this.addSlot(new Slot(playerInventory, i, 8+i*18,142));
         }
+    }
+
+    public AlloySmelterBlockEntity getBlockEntity()
+    {
+        return this.blockEntity;
     }
 }

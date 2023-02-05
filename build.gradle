@@ -124,6 +124,13 @@ repositories {
     // flatDir {
     //     dir 'libs'
     // }
+
+    maven {
+        url "https://cursemaven.com"
+        content{
+            includeGroup "curse.maven"
+        }
+    }
 }
 
 dependencies {
@@ -131,6 +138,10 @@ dependencies {
     // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.19.3-44.1.5'
+
+    runtimeOnly fg.deobf("curse.maven:EdivadLib-638508:4274179")
+    runtimeOnly fg.deobf("curse.maven:Pipez-443900:4167539")
+    runtimeOnly fg.deobf("curse.maven:SolarGeneration-336538:4275228")
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // implementation fg.deobf("com.tterrag.registrate:Registrate:MC${mc_version}-${registrate_version}") // Adds registrate as a dependency

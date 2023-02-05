@@ -1,0 +1,13 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "ingredients": [
+  {
+   "item": "enderioremake:item_alloy_ingot_melodic_alloy"
+  }
+ ],
+ "result": {
+  "item": "enderioremake:item_alloy_nugget_melodic_alloy",
+  "count": 9
+ },
+ "group": "enderioremake"
+}

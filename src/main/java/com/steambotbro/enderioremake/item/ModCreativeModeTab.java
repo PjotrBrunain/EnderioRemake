@@ -15,7 +15,7 @@ public class ModCreativeModeTab {
                 new ResourceLocation(EnderioRemake.MOD_ID, "enderioremake_tab"),
                 builder -> builder.title(Component
                         .translatable("itemGroup.enderioremake"))
-                        .icon(()-> new ItemStack(ModItems.CONDUCTIVEIRON.get()))
+                        .icon(()-> new ItemStack(ModItems.CONDUCTIVEIRONINGOT.get()))
                 );
     }
 }

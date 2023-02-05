@@ -1,0 +1,13 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "ingredients": [
+  {
+   "item": "enderioremake:item_alloy_ingot_soularium"
+  }
+ ],
+ "result": {
+  "item": "enderioremake:item_alloy_nugget_soularium",
+  "count": 9
+ },
+ "group": "enderioremake"
+}

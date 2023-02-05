@@ -1,8 +1,11 @@
 package com.steambotbro.enderioremake.block.entity;
 
 import com.steambotbro.enderioremake.block.custom.AlloySmelterBlock;
+import com.steambotbro.enderioremake.networking.ModMessages;
+import com.steambotbro.enderioremake.networking.packet.EnergySyncS2CPacket;
 import com.steambotbro.enderioremake.recipe.AlloySmelterRecipe;
 import com.steambotbro.enderioremake.screen.AlloySmelterMenu;
+import com.steambotbro.enderioremake.util.ModEnergyStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -19,8 +22,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.items.IItemHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -28,29 +32,20 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 import java.util.Optional;
 
-@SuppressWarnings("removal")
-public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
+//@SuppressWarnings("removal")
+public class AlloySmelterBlockEntity extends MachineBlockEntity implements MenuProvider
 {
-//    private final ItemStackHandler itemHandler = new ItemStackHandler(4) {
-//        @Override
-//        protected void onContentsChanged(int slot) {
-//            setChanged();
-//        }
-//
-//        @Override
-//        public boolean isItemValid(int slot, @NotNull ItemStack stack) {
-//            return switch (slot)
-//                    {
-//                        case 0 -> stack.getItem() == ModItems.CONDUCTIVEIRON.get();
-//                        case 1 -> stack.getItem() == ModItems.CONDUCTIVEIRON.get();
-//                        case 2 -> stack.getItem() == ModItems.CONDUCTIVEIRON.get();
-//                        case 3 -> false;
-//                        default -> super.isItemValid(slot, stack);
-//                    };
-//        }
-//    };
 
     private final ModItemStackHandler itemHandler = new ModItemStackHandler(this, 4);
+
+    //private final ModEnergyStorage ENERGY_STORAGE = new ModEnergyStorage(60000,1000) {
+    //    @Override
+    //    public void onEnergyChange() {
+    //        setChanged();
+    //        ModMessages.sendToClients(new EnergySyncS2CPacket(this.energy, getBlockPos()));
+    //    }
+    //};
+private static final int ENERGY_REQ = 32;
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
@@ -65,12 +60,14 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
                             (index, stack) -> itemHandler.isItemValid(0, stack) && index == 0)));
 
 
+    //private LazyOptional<IEnergyStorage> lazyEnergyHandler = LazyOptional.empty();
+
     protected final ContainerData data;
     private int progress = 0;
     private int maxProgress = 78;
 
     public AlloySmelterBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModBlockEntities.ALLOY_SMELTER.get(), pPos, pBlockState);
+        super(ModBlockEntities.ALLOY_SMELTER.get(), pPos, pBlockState,60000,1000);
         this.data = new ContainerData() {
             @Override
             public int get(int pIndex) {
@@ -110,9 +107,26 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
         return new AlloySmelterMenu(pContainerId, pPlayerInventory, this, this.data);
     }
 
+//    public IEnergyStorage getEnergyStorage()
+//    {
+//        return ENERGY_STORAGE;
+//    }
+
+//    public void setEnergyLevel(int energy)
+//    {
+//        this.ENERGY_STORAGE.setEnergy(energy);
+//    }
+
     @Override
-    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side)
+    {
+//        if (cap == ForgeCapabilities.ENERGY)
+//        {
+//            return lazyEnergyHandler.cast();
+//        }
+
+
+        if (cap == ForgeCapabilities.ITEM_HANDLER)
         {
             if (side == null)
             {
@@ -145,12 +159,14 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
     public void onLoad() {
         super.onLoad();
         lazyItemHandler = LazyOptional.of(() -> itemHandler);
+        //lazyEnergyHandler = LazyOptional.of(() -> ENERGY_STORAGE);
     }
 
     @Override
     public void invalidateCaps() {
         super.invalidateCaps();
         lazyItemHandler.invalidate();
+        //lazyEnergyHandler.invalidate();
     }
 
     @Override
@@ -158,6 +174,8 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
     {
         pTag.put("inventory", itemHandler.serializeNBT());
         pTag.putInt("alloy_smelter.progress", this.progress);
+
+        //pTag.putInt("alloy_smelter.energy", this.ENERGY_STORAGE.getEnergyStored());
         super.saveAdditional(pTag);
     }
 
@@ -166,6 +184,8 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
     {
         itemHandler.deserializeNBT(pTag.getCompound("inventory"));
         progress = pTag.getInt("alloy_smelter.progress");
+
+        //ENERGY_STORAGE.setEnergy(pTag.getInt("alloy_smelter.energy"));
         super.load(pTag);
     }
 
@@ -186,20 +206,38 @@ public class AlloySmelterBlockEntity extends BlockEntity implements MenuProvider
             return;
         }
 
-        if (hasRecipe(pEntity))
+
+
+        if (hasRecipe(pEntity) && hasEnoughEnergy(pEntity))
         {
             pEntity.progress++;
+            extractEnergy(pEntity);
             setChanged(level, blockPos, blockState);
 
             if (pEntity.progress >= pEntity.maxProgress)
             {
                 craftItem(pEntity);
             }
-        } else
+        }
+        else if (!hasEnoughEnergy(pEntity))
+        {
+            pEntity.progress--;
+            setChanged(level, blockPos, blockState);
+        }
+        else
         {
             pEntity.resetProgress();
             setChanged(level, blockPos, blockState);
         }
+    }
+
+    private static void extractEnergy(AlloySmelterBlockEntity pEntity)
+    {
+        pEntity.ENERGY_STORAGE.extractEnergy(ENERGY_REQ, false);
+    }
+
+    private static boolean hasEnoughEnergy(AlloySmelterBlockEntity pEntity) {
+        return pEntity.ENERGY_STORAGE.getEnergyStored() >= ENERGY_REQ;
     }
 
     private void resetProgress()
