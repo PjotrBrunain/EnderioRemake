@@ -16,4 +16,4 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: Package
-        path: jars
+        path: build/libs
