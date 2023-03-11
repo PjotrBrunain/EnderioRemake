@@ -183,7 +183,12 @@ publishing {
     }
     repositories {
         maven {
-            url "file://${project.projectDir}/mcmodsrepo"
+            name = "GithubPackages"
+            url = "https://maven.pkg.github.com/PjotrBrunain/EnderioRemake"
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
         }
     }
 }
