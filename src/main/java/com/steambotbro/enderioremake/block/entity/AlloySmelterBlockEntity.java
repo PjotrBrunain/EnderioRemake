@@ -58,7 +58,7 @@ public class AlloySmelterBlockEntity extends MachineBlockEntity implements MenuP
             }
         };
 
-        InitItemHandler(4, this);
+        InitItemHandler(3,1,0, this);
     }
 
     @Override
